@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.goods.param.ParamMapper">
+
+    <select id="selParamList" parameterType="com.xinyu.entity.param.Param" resultType="com.xinyu.entity.param.Param">
+        select id,param_name paramName,cid
+        from param
+        where 1=1
+        <if test="cid != null">
+            and cid = #{cid}
+        </if>
+    </select>
+
+    <insert id="addParam" parameterType="com.xinyu.entity.param.Param">
+        insert into param(param_name,cid) values(#{paramName},#{cid})
+    </insert>
+
+    <update id="updateParam" parameterType="com.xinyu.entity.param.Param">
+        update param set param_name = #{paramName} where id = #{id}
+    </update>
+
+    <delete id="removeParam" parameterType="int">
+        delete from param where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.goods.GoodsCategoryMapper">
+
+    <select id="selGoodsCategory" parameterType="com.xinyu.entity.GoodsCategory" resultType="com.xinyu.entity.GoodsCategory">
+        select
+            id,
+            category_name  categoryName,
+            effective,
+            level,
+            pid
+        from goods_category
+        where 1=1
+        <if test="id != null">
+           and id = #{id}
+        </if>
+        <if test="pid != null">
+            and pid = #{pid}
+        </if>
+        <if test="level != null">
+            and level = #{level}
+        </if>
+    </select>
+
+    <insert id="addGoodsCategory" parameterType="com.xinyu.entity.GoodsCategory">
+        insert into goods_category(category_name,level,pid)
+        values (#{categoryName},#{level},#{pid})
+    </insert>
+
+    <update id="updateGoodsCategory" parameterType="com.xinyu.entity.GoodsCategory">
+        update goods_category set
+            category_name = #{categoryName},
+            level = #{level},
+            pid = #{pid}
+        where id = #{id}
+    </update>
+
+    <delete id="removeGoodsCategory" parameterType="int">
+        delete from goods_category where id = #{id}
+    </delete>
+
+</mapper>

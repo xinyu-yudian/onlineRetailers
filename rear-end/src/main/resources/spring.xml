@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.xinyu"/>
+
+    <!--生成切面对象-->
+    <aop:aspectj-autoproxy/>
+
+    <!--连接数据库-->
+    <!--1.导入外部文件-->
+    <context:property-placeholder location="classpath*:mysql.properties"/>
+    <!--2.配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="testWhileIdle" value="true"/>
+    </bean>
+
+    <!-- 配置SqlSessionFactory对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置MyBaties全局配置文件:mybatis.xml -->
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+    </bean>
+
+    <!-- 配置扫描Dao接口包，动态实现Dao接口注入到spring容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- mapper -->
+        <property name="basePackage" value="com.xinyu.mapper"/>
+    </bean>
+
+
+    <bean id="user" class="com.xinyu.entity.User"/>
+    <bean id="power" class="com.xinyu.entity.Power"/>
+    <bean id="role" class="com.xinyu.entity.Role"/>
+    <bean id="goodsCategory" class="com.xinyu.entity.GoodsCategory"/>
+    <bean id="attr" class="com.xinyu.entity.attr.Attr"/>
+    <bean id="attrChild" class="com.xinyu.entity.attr.AttrChild"/>
+    <bean id="param" class="com.xinyu.entity.param.Param"/>
+    <bean id="paramChild" class="com.xinyu.entity.param.ParamChild"/>
+    <bean id="goods" class="com.xinyu.entity.Goods"/>
+    <bean id="order" class="com.xinyu.entity.order.Order"/>
+    <bean id="report" class="com.xinyu.entity.Report"/>
+
+
+</beans>

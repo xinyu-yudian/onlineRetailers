@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.UserMapper">
+
+    <!--登录-->
+    <select id="login"  resultType="com.xinyu.entity.User">
+        select
+        id,
+        username,
+        password,
+        email,
+        mobile,
+        role_name  roleName,
+        ms_state msState
+        from
+        user
+        where  username = #{username} and password = #{password}
+    </select>
+
+    <!--查询用户-->
+    <select id="getUserList" parameterType="com.xinyu.entity.User" resultType="com.xinyu.entity.User">
+        select
+            id,
+            username,
+            password,
+            email,
+            mobile,
+            role_name  roleName,
+            ms_state msState
+        from
+            user
+        where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="username != null and username != ''">
+           and username like concat('%',#{username},'%')
+        </if>
+        <if test="roleName != null and roleName != ''">
+            and role_name = #{roleName}
+        </if>
+    </select>
+
+    <insert id="addUser" parameterType="com.xinyu.entity.User">
+        insert into
+            user(username, password,email,mobile)
+        values(#{username},#{password},#{email},#{mobile})
+
+    </insert>
+
+    <delete id="removeUser" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.xinyu.entity.User">
+        update user set email = #{email}, mobile= #{mobile} where id = #{id}
+    </update>
+
+    <update id="updateUserState">
+        update user set ms_state = #{state} where id = #{id}
+    </update>
+
+</mapper>

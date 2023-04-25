@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.goods.attr.AttrChildMapper">
+
+    <select id="selAttrChildList" parameterType="com.xinyu.entity.attr.AttrChild" resultType="com.xinyu.entity.attr.AttrChild">
+        select id,child_name childName,aid
+        from attr_child
+        where 1=1
+        <if test="aid != null">
+            and aid = #{aid}
+        </if>
+    </select>
+
+    <insert id="addAttrChild" parameterType="com.xinyu.entity.attr.AttrChild">
+        insert into attr_child(child_name,aid) values(#{childName},#{aid})
+    </insert>
+
+    <update id="updateAttrChild" parameterType="com.xinyu.entity.attr.AttrChild">
+        update attr_child set child_name = #{childName} where id = #{id}
+    </update>
+
+    <delete id="removeAttrChild" parameterType="int">
+        delete from attr_child where id = #{id}
+    </delete>
+
+</mapper>
