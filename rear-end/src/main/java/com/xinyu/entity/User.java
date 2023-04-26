@@ -6,11 +6,11 @@ import java.io.Serializable;
 
 @Data
 public class User implements Serializable {
-    Integer id;
-    String username;
-    String password;
-    String email;
-    String mobile;
-    String roleName;
-    Boolean msState;
+   private Integer id;
+   private String username;
+   private String password;
+   private String email;
+   private String mobile;
+   private String roleName;
+   private Boolean msState;
 }

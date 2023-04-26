@@ -16,6 +16,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 
+// axios.defaults.baseURL = "http://192.168.52.128:8088"
 axios.defaults.baseURL = "http://localhost:8088"
 Vue.prototype.$http = axios
 

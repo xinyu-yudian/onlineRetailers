@@ -3,8 +3,8 @@ module.exports = defineConfig({
     transpileDependencies: true,
     lintOnSave: false,
     devServer: {
-        // host: '192.168.43.50',
-        port: 8082,
+        // host: 'http://192.168.52.128/',
+        port: 88,
         open: { app: { name: 'chrome' } }
     }
 })
