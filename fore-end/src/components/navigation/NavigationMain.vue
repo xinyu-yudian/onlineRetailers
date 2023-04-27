@@ -5,17 +5,30 @@
         <NavigationHead/>
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside :width="isCollapse ? '64px' :  '200px'">
+          <div @click="toggleCollapse()" 
+                style="height:15px; 
+                       padding: 5px;
+                       line-height: 10px; 
+                       background-color: #545c64; 
+                       color: aliceblue;
+                       font-size: 25px">
+            <i :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" ></i></div>
           <el-row class="tac">
   
-  <el-col :span="12" style="width: 200px; height: 690px;">
+  <el-col :span="12" style="width: 200px; height: 680px;">
+      <!-- <i class="el-icon-s-grid"></i> -->
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b" 
-      style="text-align: left;" unique-opened>
+      style="text-align: left;" 
+      unique-opened
+      :collapse="isCollapse"
+      :collapse-transition="false">
+
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-user"></i>
@@ -113,6 +126,16 @@ export default {
   },
   components: {
     NavigationHead
+  },
+  data(){
+    return {
+      isCollapse: false,
+    }
+  },
+  methods:{
+    toggleCollapse: function(){
+        this.isCollapse = !this.isCollapse
+    }
   }
  
 }

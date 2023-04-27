@@ -26,7 +26,7 @@ public class LogRegController {
 
     @RequestMapping( "/login")
     public String login(@RequestBody String param){
-        map = new HashMap<String, Object>();
+        map = new HashMap<>();
         JSONObject jsonObject = JSON.parseObject(param);
         System.out.println(jsonObject);
         String username = jsonObject.getString("username");
