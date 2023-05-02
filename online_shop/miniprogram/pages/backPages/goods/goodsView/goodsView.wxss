@@ -1,0 +1,181 @@
+/* pages/backPages/goods/goodsView/goodsView.wxss */
+.head{
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+  border-bottom: 1px solid;
+}
+.goodsIcon{
+   width: 80%;
+   height: 18.5rem;
+   margin-left: 2.3rem;
+}
+.body{
+  padding: 10px;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.price{
+   color: red;
+   font-size: 1.8rem;
+   margin-bottom: 5px;
+}
+.monyIcon{
+  font-size: 20px;
+  margin-right: -8px;
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.nameHead{
+  background-color: seagreen;
+  color: white;
+  border-radius:5px;
+  padding: 3px 8px;
+  line-height: 20px;
+  font-size: 15px;
+}
+.nameText{
+   font-size: 20px;
+   font-weight: bold;
+   margin-left: 10px;
+   max-width: 25rem;
+   overflow: hidden;
+}
+
+.foot{
+  background-color: rgb(231, 221, 221);
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.footItem{
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+}
+.footIcon{
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+  margin-right: 5px;
+}
+.footText{
+    line-height: 2rem;
+    margin-top: 0px;
+}
+.buy{
+  display: flex;
+  flex-direction: row;
+  border-top: 0.5px solid #333;
+  position:absolute;
+  bottom: 1rem;
+  width: 100%;
+  padding-left: 0.9rem;
+}
+.buyLeft{
+  display: flex;
+  flex-direction: row;
+}
+.buyItem{
+   display: flex;
+   flex-direction: column;
+   margin: 10px;
+   text-align: center;
+}
+.buyItemIcon{
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  min-height: 1.5rem;
+  max-height: 1.5rem;
+  padding-left: 5px;
+}
+.buyItemText{
+   font-size: 12px;
+   margin-left: 5px;
+}
+.buyRight{
+  padding: 10px;
+  margin: 10px;
+  font-size: 1rem;
+  color: aliceblue;
+  text-align: center;
+}
+.toCart{
+  background-image: linear-gradient(to left, rgb(255, 94, 0) , rgb(255, 196, 0));
+  padding: 10px 20px;
+  border-radius: 2rem 0rem 0rem 2rem;
+}
+.toBuy{
+  background-color: rgb(245, 78, 36);
+  padding: 10px 25px;
+  border-radius: 0rem 2rem 2rem 0rem;
+}
+
+.buyNumber{
+  width: 80%;
+  margin: 1.3rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 1rem rgba(166, 173, 177, 0.733);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem;
+  position:absolute;
+  bottom: 10%;
+}
+.sum{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+.num{
+  margin: 5px;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+}
+.numMony{
+  color: red;
+}
+.numberBtn{
+  display: flex;
+  flex-direction: row;
+}
+
+.sub{
+  background-repeat: no-repeat;
+  background-position: 5px;
+  background-size: 12px 12px;
+
+  width: 2rem;
+  height: 1.5rem;
+  margin: 5px;
+}
+.add{
+  background-repeat: no-repeat;
+  background-position: 5px;
+  background-size: 12px 12px;
+
+  width: 2rem;
+  height: 1.5rem;
+  margin: 5px;
+}
+.numberText{
+  background-color: rgb(230, 223, 223);
+  color: rgb(240, 165, 66);
+  padding: 5px 20px;
+  border-radius: 5px;
+  max-width: 50px;
+  min-width: 50px;
+  max-height: 20px;
+  min-height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin: 0;
+  margin-top: 2px;
+}

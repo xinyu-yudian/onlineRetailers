@@ -33,4 +33,9 @@ public class GoodsServiceImpl implements GoodsService {
     public boolean removeGoods(Integer id) {
         return goodsMapper.removeGoods(id)>0;
     }
+
+    @Override
+    public boolean updateNumber(Goods goods){
+        return goodsMapper.updateNumber(goods)>0;
+    }
 }

@@ -1,0 +1,57 @@
+<!--pages/backPages/goods.wxml-->
+<view class="body">
+  <input placeholder="请输入搜索内容"/>
+
+  <swiper
+ autoplay="{{true}}"
+ circular="{{true}}"
+ indicator-dots="{{true}}"
+ interval="3000"
+>
+	<swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver01.png" />
+	</swiper-item>
+	<swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver02.png" />
+	</swiper-item>
+	<swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver03.png" />
+	</swiper-item>
+  <swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver04.png" />
+	</swiper-item>
+  <swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver05.png" />
+	</swiper-item>
+  <swiper-item>
+		<image mode="heightFix" src="../../../images/adver/adver06.png" />
+	</swiper-item>
+</swiper>
+
+<view class="category">
+   <view wx:for="{{goodsCategory}}" class="categoryItem" data-info="{{item}}" bindtap="toGoodsDetails">
+     <view class="categoryShow">
+       <image src="../../../images/goodsShow.png"></image>
+       <text>{{item.categoryName}}</text>
+     </view>
+   </view>
+</view>
+
+<view class="goodsShowAll">
+    <view>
+      <image src="../../../images/hotGoods.png" class="titleOne"></image>
+      <text class="titleTwo">热销产品</text>
+      <text class="titleThree">查看更多 >></text>
+    </view>
+</view>
+
+<view class="goodsList">
+    <view wx:for="{{goodsList}}" class="goodsItem" bindtap="toGoodsView" data-info="{{item}}">
+        <image src="../../../images/promotion.png" class="proGoodsIcon"></image>
+        <text class="proGoodsText">{{item.goodsName}}</text>
+        <text class="proGoodsPrice">￥{{item.price}}</text>
+    </view>
+</view>
+
+</view>
+

@@ -14,4 +14,6 @@ public interface GoodsMapper {
     int updateGoods(Goods goods);
 
     int removeGoods(Integer id);
+
+    int updateNumber(Goods goods);
 }

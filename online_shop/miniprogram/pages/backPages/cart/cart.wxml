@@ -1,0 +1,53 @@
+<!--pages/backPages/cart/cart.wxml-->
+<view class="head">
+       <!-- 数据列表 -->
+      <view wx:for="{{dataList}}" wx:key="i" class="goodsItem">
+          <checkbox-group class="checkBtn" bindchange="checkboxChange" data-id="{{item.goods.id}}">
+            <checkbox value="{{item.goods.id}}" style="float:left;" checked='{{item.checked}}'></checkbox>
+          </checkbox-group> 
+          <image class="goodsIcon" src="../../../images/goodsDetail.png"/>
+          <view class="goodsInfo">
+              <view class="goodsName"> 
+                <text>{{item.goods.goodsName}}</text>
+              </view>
+              <view class="goodsNumber">
+                <view class="priceAll">
+                  <view>
+                    <text>单价：</text>
+                    <text class="goodsPrice">￥{{item.goods.price}}</text>
+                  </view>
+                  <view>
+                    <text>小计：</text>
+                    <text class="goodsPrice">￥{{item.goods.price * item.number}}</text>
+                  </view>
+                </view>
+                
+                <view class="numberBtn">
+                  <button bindtap="sub" data-id="{{item.goods.id}}" class="sub" size="mini" type="warn" style="background-image: url('../../../images/jian.png')"></button>
+                  <text class="numberText">{{item.number}}</text>
+                  <button bindtap="add" data-id="{{item.goods.id}}" class="add" size="mini" type="default" style="background-image: url('../../../images/jia.png')"></button>
+                </view>
+              </view>
+          </view>
+      </view>
+</view>
+
+<view class="foot">
+   <view class="footLeft">
+      <!-- 一键全选 -->
+      <checkbox-group wx:if="{{dataList.length > 0}}" class="checkAll" bindchange="selectAll">
+        <checkbox value="all" checked="{{checkedAll}}"></checkbox> 
+        <text class="checkAllText">全选</text>
+      </checkbox-group> 
+      <view>
+         <text class="cartSumPriceText">合计：</text>
+         <text class="cartSumPrice">￥{{sumPrice}}</text>
+      </view>
+   </view>
+   <view class="footRight" bindtap="toSettlement">
+       <text>结算</text>
+   </view>
+</view>
+
+
+

@@ -39,6 +39,7 @@ public class GoodsController {
         System.out.println(jsonObject);
         goods.setId(jsonObject.getInteger("id"));
         goods.setGoodsName(jsonObject.getString("goodsName"));
+        goods.setCatId(jsonObject.getInteger("catId"));
         pageNow = jsonObject.getInteger("pageNow");
 
         start = (pageNow-1)*pageSize;

@@ -12,4 +12,6 @@ public interface GoodsService {
     boolean updateGoods(Goods goods);
 
     boolean removeGoods(Integer id);
+
+    boolean updateNumber(Goods goods);
 }

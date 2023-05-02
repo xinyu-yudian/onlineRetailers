@@ -1,0 +1,49 @@
+<!--pages/backPages/goods/goodsView/goodsView.wxml-->
+<view class="head">
+   <image class="goodsIcon" src="../../../../images/goodsShow.png"/>
+</view>
+<view class="body">
+    <text class="price">
+      <text class="monyIcon">￥</text> {{goods.price}}
+     </text>
+    <view class="name">
+      <text class="nameHead">热销商品</text>
+      <text class="nameText">{{goods.goodsName}}</text>
+    </view>
+</view>
+<view class="foot">
+    <view class="footItem">
+       <image class="footIcon" src="../../../../images/快递.png"/>
+       <text class="footText">退货运险费：7天无理由退货</text>
+    </view>
+</view>
+<view class="buyNumber">
+    <view class="sum">
+      <text>小计</text>
+      <text class="numMony">￥{{goods.price * goodsNumber}}</text>
+    </view>
+    <view class="num">
+      <text>购买数量</text>
+      <view class="numberBtn">
+        <button bindtap="sub" class="sub" size="mini" type="warn" style="background-image: url('../../../../../../images/jian.png')"></button>
+        <text class="numberText">{{goodsNumber}}</text>
+        <button bindtap="add" class="add" size="mini" type="default" style="background-image: url('../../../../../../images/jia.png')"></button>
+      </view>
+    </view>
+</view>
+<view class="buy">
+    <view class="buyLeft">
+        <view class="buyItem">
+           <image class="buyItemIcon" src="../../../../images/客服.png"/>
+           <text class="buyItemText">客服</text>
+        </view>
+        <view class="buyItem">
+           <image class="buyItemIcon" src="../../../../images/收藏.png"/>
+           <text class="buyItemText">收藏</text>
+        </view>
+    </view>
+    <view class="buyRight">
+        <text class="toCart" bindtap="addToCart">加入购物车</text>
+        <text class="toBuy">立即购买</text>
+    </view>
+</view>

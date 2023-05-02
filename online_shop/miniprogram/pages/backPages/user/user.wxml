@@ -1,0 +1,48 @@
+<!--pages/backPages/user/user.wxml-->
+
+    <view class="top" style="background-image: url('../../../images/headBack.png');">
+       <view class="userHead" >
+            <image class="userIcon" src="../../../images/{{user.id % 2 == 0 ? 'man' : 'woman'}}.png"></image>
+            <text class="userText">{{user.username}}</text>
+        </view>
+    </view>
+    
+
+     <view class="userInfo">
+      <view class="itemHead">
+          <image class="itemHeadIcon" src="../../../images/userInfo.png"/>
+          <text class="itemHeadText">个人资料</text>
+      </view>
+          <view class="userInfoItem">
+              <text>昵称</text>
+              <text>{{user.username}}</text>
+          </view>
+          <view class="userInfoItem">
+              <text>邮箱</text>
+              <text>{{user.email}}</text>
+          </view>
+          <view class="userInfoItem" style="border: none;">
+              <text>手机</text>
+              <text>{{user.mobile}}</text>
+          </view>
+     </view>
+
+     <view class="other">
+         <view class="otherItem">
+            <image class="otherIcon" src="../../../images/user/collect.png"/>
+            <text class="otherText">我的收藏</text>
+         </view>
+         <view class="otherItem">
+            <image class="otherIcon" src="../../../images/user/takeOver.png"/>
+            <text class="otherText">待收货</text>
+         </view>
+         <view class="otherItem">
+            <image class="otherIcon" src="../../../images/user/comment.png"/>
+            <text class="otherText">待评价</text>
+         </view>
+         <view class="otherItem">
+            <image class="otherIcon" src="../../../images/user/afterSales.png"/>
+            <text class="otherText">退款/售后</text>
+         </view>
+     </view>
+

@@ -8,5 +8,6 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     List<Order> selOrders(Order order);
-    int updateAddress(Order order);
+    int updateOrder(Order order);
+    int addOrder(Order order);
 }

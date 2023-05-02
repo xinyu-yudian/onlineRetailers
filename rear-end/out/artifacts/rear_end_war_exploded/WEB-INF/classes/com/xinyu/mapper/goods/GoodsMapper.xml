@@ -45,6 +45,13 @@
         <if test="goodsName != null and goodsName != ''">
             and goods_name like concat('%',#{goodsName},'%')
         </if>
+        <if test="catId != null">
+            and cat_id = #{catId}
+        </if>
     </select>
+
+    <update id="updateNumber" parameterType="com.xinyu.entity.Goods">
+        update goods set number = number - #{number} where id = #{id}
+    </update>
 
 </mapper>

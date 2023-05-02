@@ -1,0 +1,107 @@
+/* pages/backPages/user/user.wxss */
+.top{
+  width: 100%;
+  height: 40%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-color: teal;
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
+
+.userHead{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 0.5rem solid white;
+  box-shadow: 0 0 10px rgba(201, 208, 209, 0.733);
+  position:absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.userText{
+   margin-top: 1rem;
+}
+
+.userIcon{
+  min-width: 6rem;
+  max-width: 6rem;
+  min-height: 6rem;
+  max-height: 6rem;
+}
+
+.userInfo{
+  width: 83%;
+  box-shadow: 0 0 10px rgba(201, 208, 209, 0.733);
+  margin: 13rem 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+  z-index: 100;
+  background-color: white;
+}
+
+.userInfoItem{
+   display: flex;
+   justify-content: space-between;
+   margin: 1rem;
+   
+   border-bottom: 0.3px solid rgb(105, 101, 101);
+   padding: 0.5rem;
+}
+
+.itemHead{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.3px solid rgb(105, 101, 101);
+  padding: 0.5rem;
+}
+
+.itemHeadIcon{
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+  margin-right: 0.5rem;
+}
+
+.itemHeadText{
+   padding-top: 0.3rem;
+}
+.other{
+  width: 83%;
+  box-shadow: 0 0 10px rgba(201, 208, 209, 0.733);
+  margin: 1rem 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+  z-index: 100;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 5%;
+}
+.otherItem{
+   display: flex;
+   flex-direction: column;
+   margin: 0.5rem;
+   min-width: 3.8rem;
+   max-width: 3.8rem;
+   text-align: center;
+}
+.otherIcon{
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+  margin-right: 0.5rem;
+  padding-left: 1rem;
+}
+.otherText{
+  font-size: 0.8rem;
+}

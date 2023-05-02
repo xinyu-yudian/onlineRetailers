@@ -1,0 +1,32 @@
+<!--pages/backPages/goods/goodsDetails/goodsDetails.wxml-->
+<!-- 左侧滚动栏 -->
+<view class='under_line'>
+  <text>{{title}}</text>
+</view>
+<view style='float: left' class='left'>
+  <scroll-view scroll-y scroll-with-animation scroll-left="{{scrollLength}}" class='scrollY' style='height: {{winHeight}}px'>
+    <view class='all clear'>
+      <block wx:for="{{lists}}">
+       <text class="categoryTitle">{{item.categoryName}}</text>
+        <view wx:for="{{item.children}}" wx:for-item="itemc" wx:for-index="idc">
+          <view bindtap='jumpIndex' data-menuindex='{{itemc.id}}'>
+          <view class='text-style'>
+            <text class="{{indexId==itemc.id?'active1':''}}">{{itemc.categoryName}}</text>
+            <text class="{{indexId==itemc.id?'active':''}}">
+            </text>
+          </view>
+        </view>
+        </view>
+        
+      </block>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="right">
+  <view wx:for="{{goodsList}}" class="goodsItem" bindtap="toGoodsView" data-info="{{item}}">
+        <image src="../../../../images/promotion.png" class="proGoodsIcon"></image>
+        <text class="proGoodsText">{{item.goodsName}}</text>
+        <text class="proGoodsPrice">￥{{item.price}}</text>
+    </view>
+</view>

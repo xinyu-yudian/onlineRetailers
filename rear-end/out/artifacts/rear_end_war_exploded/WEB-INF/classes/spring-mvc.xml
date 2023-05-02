@@ -67,4 +67,14 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
+    <!--拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        &lt;!&ndash; 检验token &ndash;&gt;-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <bean class="com.xinyu.utils.HeaderTokenInterceptor" />-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+
 </beans>

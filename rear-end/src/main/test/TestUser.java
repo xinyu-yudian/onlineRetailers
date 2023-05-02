@@ -1,5 +1,8 @@
+import com.alibaba.fastjson.JSON;
 import com.xinyu.entity.User;
+import com.xinyu.entity.order.OrderDetails;
 import com.xinyu.mapper.UserMapper;
+import com.xinyu.mapper.order.OrderDetailsMapper;
 import com.xinyu.mapper.role.RoleMapper;
 import com.xinyu.service.*;
 import org.junit.Test;
@@ -28,6 +31,9 @@ public class TestUser {
 
     @Autowired
     private ReportService reportService;
+
+    @Autowired
+    private OrderDetailsMapper orderDetailsMapper;
 
     @Test
     public void testSelect(){
@@ -66,6 +72,15 @@ public class TestUser {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String nowTime = sdf.format(date);
         System.out.println(nowTime);
+    }
+
+    @Test
+    public void testOrderDetails(){
+        OrderDetails orderDetails = new OrderDetails();
+        orderDetails.setOrderId(1);
+        List<OrderDetails> orderDetailsList = orderDetailsMapper.detailsList(orderDetails);
+
+        System.out.println(JSON.toJSONString(orderDetailsList));
     }
 
 }

@@ -6,12 +6,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xinyu.entity.User;
 import com.xinyu.entity.order.Order;
+import com.xinyu.entity.order.OrderDetails;
 import com.xinyu.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +27,9 @@ public class OrderController {
     @Autowired
     private Order order;
 
+    @Autowired
+    private OrderDetails orderDetails;
+
     private static final Integer pageSize = 5;
     private Integer start = 0;
     private Integer pageNow = 1;
@@ -39,8 +40,14 @@ public class OrderController {
     public String getOrders(@RequestBody() String params){
         JSONObject jsonObject = JSON.parseObject(params);
         System.out.println(jsonObject);
+        order.setId(jsonObject.getInteger("id"));
         order.setOrderNumber(jsonObject.getString("orderNumber"));
+        if (jsonObject.getInteger("payStatus") != null && !"".equals(jsonObject.getInteger("payStatus"))){
+            Integer status = jsonObject.getInteger("payStatus")<0 ? null : jsonObject.getInteger("payStatus");
+            order.setPayStatus(status);
+        }
         pageNow = jsonObject.getInteger("pageNow");
+
 
         start = (pageNow-1)*pageSize;
         PageHelper.offsetPage(start, pageSize);
@@ -72,7 +79,7 @@ public class OrderController {
         order.setAddress(jsonObject.getString("firstAddress")+"-"+jsonObject.getString("secondAddress"));
         pageNow = jsonObject.getInteger("pageNow");
 
-        flag = orderService.updateAddress(order);
+        flag = orderService.updateOrder(order);
         map = new HashMap<>();
         if(flag){
             map.put("status",200);
@@ -81,4 +88,18 @@ public class OrderController {
         }
         return JSON.toJSONString(map);
     }
+
+    @GetMapping("/getOrderDetails")
+    public String getOrderDetails(@RequestParam("orderId") Integer orderId){
+        System.out.println("orderId:"+orderId);
+        orderDetails.setOrderId(orderId);
+        List<OrderDetails> detailsList = orderService.detailsList(orderDetails);
+        System.out.println(detailsList);
+        map = new HashMap<>();
+        if(detailsList!=null && detailsList.size()>0){
+            map.put("data",detailsList);
+        }
+        return JSON.toJSONString(map);
+    }
+
 }

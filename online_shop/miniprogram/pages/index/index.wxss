@@ -1,0 +1,61 @@
+/**index.wxss**/
+.loginHead{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 1px solid rgb(14, 219, 202);
+    box-shadow: 0 0 10px rgba(7, 168, 205, 0.733);
+    z-index: 100;
+}
+.loginHead image{
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.inBody{
+    padding: 5rem 2rem;
+    background-color: #246d89;
+    border-radius: 0.5rem;
+    margin: 2rem;
+    position: absolute;
+    top: 18%;
+    padding-bottom: 2.5rem;
+}
+
+input{
+   border: 1px solid #333;
+   padding: 0.5rem;
+   padding-left: 1rem;
+   width: 15rem;
+   margin: 2rem 1rem;
+   background-color: aliceblue;
+   border-radius: 0.5rem;
+}
+
+.inBodyFoot{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+button{
+    font-size: 1rem;
+    color: white;
+    max-width: 6rem;
+}
+.loginBtn{
+    background-color: rgba(43, 135, 221, 0.808);
+}
+.loginBtn:active{
+    background-color: rgb(44, 146, 241);
+    color: white;
+}
+
+.resetBtn{
+  background-color: rgba(147, 154, 161, 0.363);
+  margin-right: 5px;
+}
+.resetBtn:active{
+  background-color: rgba(74, 78, 82, 0.637);
+  color: white;
+}

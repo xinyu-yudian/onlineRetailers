@@ -1,0 +1,62 @@
+<!--pages/backPages/order/orderDetails/orderDetails.wxml-->
+<view class="main">
+    <view class="head">
+         <text style="font-weight: bold;">收件人：{{user.username}}</text>
+         <text>联系电话：{{user.mobile}}</text>
+         <text>收货地址：{{order.address}}</text>
+    </view>
+    <view class="body">
+       <view class="title">
+           <image class="titleIcon" src="../../../../images/goodsDetail.png"></image>
+           <text class="titleText">商品信息</text>
+       </view>
+       <view class="goodsList">
+        <view wx:for="{{orderDetails}}" class="goodsItem">
+            <view>
+                <image class="goodsIcon" src="../../../../images/promotion.png"/>
+            </view>
+            <view>
+                <text class="goodsName">{{item.goods.goodsName}}</text>
+                <view class="goodsFoot">
+                    <text class="goodsPrice">￥{{item.goods.price}}</text>
+                    <text>x{{item.goodsNumber}}</text>
+                </view>
+            </view>
+        </view>
+       </view>
+       <view class="goodsListFoot">
+           <text>订单总计</text>
+           <text class="goodsPrice">￥{{order.orderPrice}}</text>
+       </view>
+    </view>
+
+    <view class="body body2" wx:if="{{order.payStatus == 1}}">
+       <view class="title">
+           <image class="titleIcon" src="../../../../images/orderSum.png"></image>
+           <text class="titleText">订单信息</text>
+       </view>
+       <view class="goodsList2">
+        <view class="orderInfo">
+          <text>订单编号</text>
+          <text class="orderNumber">{{order.orderNumber}}</text>
+        </view>
+        <view class="orderInfo">
+          <text>订单备注</text>
+          <text>{{}}</text>
+        </view>
+        <view class="orderInfo">
+          <text>下单时间</text>
+          <text>{{order.placeTime}}</text>
+        </view>
+        <view class="orderInfo">
+          <text>物流信息</text>
+          <text>{{order.isSend=='否' ? '未发货':'已发货'}}</text>
+        </view>
+          
+       </view>
+    </view>
+
+    <view>
+      <button bindtap="toPay" type="primary" wx:if="{{order.payStatus == 0}}" class="toPay">支付</button>
+    </view>
+</view>

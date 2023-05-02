@@ -6,9 +6,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xinyu.entity.User;
 import com.xinyu.service.UserService;
+import com.xinyu.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +29,8 @@ public class UserController {
     private static final Integer pageSize = 5;
     private Integer start = 0;
     private Integer pageNow = 1;
+
+    private ServletContext application;
 
     @PostMapping("/getUsers")
     public String getUsers(@RequestBody String param) {
@@ -110,11 +117,29 @@ public class UserController {
     public String updateUserState(@PathVariable Integer id,@PathVariable Boolean state) {
         boolean flag = userService.updateUserState(id,state);
 
-        map = new HashMap<String, Object>();
+        map = new HashMap<>();
         if(flag){
             map.put("status",200);
         }else {
             map.put("status",500);
+        }
+        return JSON.toJSONString(map);
+    }
+
+    @GetMapping("/getLoginUser")
+    public String getLoginUser(HttpServletRequest request){
+        application = request.getServletContext();
+        user= (User) application.getAttribute("user");
+//        if (request.getHeader("token") != null) {
+//            String token = request.getHeader("token");
+//            Map<String,Object> claims = JWTUtils.parseToken(token);
+//            username = (String) claims.get("username");
+//        }
+
+        List<User> userList = userService.getUserList(user);
+        map = new HashMap<>();
+        if (userList != null){
+            map.put("user",userList.get(0));
         }
         return JSON.toJSONString(map);
     }

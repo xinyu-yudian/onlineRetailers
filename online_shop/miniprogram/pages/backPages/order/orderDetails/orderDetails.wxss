@@ -1,0 +1,99 @@
+/* pages/backPages/order/orderDetails/orderDetails.wxss */
+.main{
+  
+}
+.head{
+  margin-top: 0.2rem;
+   display: flex;
+   flex-direction: column;
+   padding: 0.5rem;
+   border: 0.2em solid transparent;
+   background: linear-gradient(white,white) padding-box,repeating-linear-gradient(-45deg, red 0, red 12.5%, transparent 0, transparent 25%, #58a 0, #58a 37.5%, transparent 0, transparent 50%) 0/2em 2em;
+   border-left: none;
+   border-right: none;
+   background-color: white;
+   box-shadow: 0 0 1rem rgba(210, 214, 216, 0.733);
+}
+
+.head text{
+   margin: 0.1rem;
+}
+
+.body{
+  margin: 1rem 0rem;
+  box-shadow: 0 0 1rem rgba(210, 214, 216, 0.733);
+  display: flex;
+  flex-direction: column;
+
+}
+.goodsList{
+  max-height: 22rem;
+  overflow: scroll;
+}
+.title{
+   display: flex;
+   flex-direction: row;
+   border-bottom: 0.3px solid rgb(119, 115, 115);
+   padding: 0.5rem;
+}
+.titleIcon{
+   width: 2rem;
+   height: 2rem;
+}
+.titleText{
+   margin: 0.3rem;
+}
+
+.goodsIcon{
+  width: 5rem;
+  height: 5rem;
+}
+
+.goodsItem{
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem;
+  border-bottom: 0.3px solid rgb(121, 117, 117);
+}
+.goodsPrice{
+    color: red;
+}
+.goodsFoot{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.goodsName{
+  padding: 0.5rem;
+}
+
+.orderInfo{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem 0.5rem;
+}
+.orderInfo > text:first-child{
+  color: rgb(108, 112, 116);
+}
+.body2{
+  margin: 1rem;
+}
+.goodsList2{
+  padding: 1rem;
+}
+
+.toPay{
+    min-width: 20rem;
+    max-width: 20rem;
+}
+
+.goodsListFoot{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.orderNumber{
+   font-size: 12px;
+   color: #58a;
+   margin-top: 3px;
+}

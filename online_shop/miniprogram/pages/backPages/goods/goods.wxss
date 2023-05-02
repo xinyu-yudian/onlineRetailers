@@ -1,0 +1,124 @@
+/* pages/backPages/goods.wxss */
+
+input{
+  border: 0.3px solid rgb(189, 181, 181);
+  border-radius: 5px;
+  padding: 3px;
+  padding-left: 1rem;
+  width: 15rem;
+  position: absolute;
+  transform: translate(-5%,-20%);
+  top: 1rem;
+  left: 20%;
+  z-index: 200;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  
+}
+
+swiper{
+  float: left;
+  width: 100%;
+  height: calc(100vw*442/810);
+}
+image{
+  width: 100%;
+}
+
+.category{
+   background-color: white;
+   box-shadow: 0 0 10px rgba(155, 162, 165, 0.733);
+   width: 90%;
+   height: fit-content;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   padding: 5px;
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   border-radius: 0.5rem;
+}
+
+.categoryItem{
+   margin: 5px 5px;
+   padding: 5px 10px;
+}
+.categoryShow{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.categoryShow image{
+   width: 3.4rem;
+   height: 3.4rem;
+}
+.goodsShowAll{
+  position: absolute;
+  top: 58%;
+  box-shadow: 0 0 10px rgba(210, 214, 216, 0.733);
+  width: 95%;
+  margin: 0rem 0.3rem;
+  padding: 0.3rem;
+  margin-bottom: 0rem;
+}
+
+.titleOne{
+   width: 2rem;
+   height: 2rem;
+}
+.titleTwo{
+  position: relative;
+  bottom: 0.5rem;
+}
+.titleThree{
+   float:right;
+   margin: 0.45rem 0.3rem;
+   color: rgb(161, 195, 235);
+}
+
+.goodsList{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 66%;
+}
+
+.goodsItem{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-shadow: 0 0 0.5rem rgba(210, 214, 216, 0.733);
+  margin: 0.1rem 0.5rem;
+}
+
+.proGoodsIcon{
+  min-width: 3rem;
+  max-width: 3rem;
+  height: 3rem;
+  margin: 0.5rem;
+  border: 0.1rem solid rgb(214, 205, 205);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.proGoodsText{
+  font-size: 0.8rem;
+  margin: 1rem 0.5rem;
+  max-width: 10rem;
+  overflow: hidden;
+}
+
+.proGoodsPrice{
+   margin: 1rem;
+   color: aliceblue;
+   background-color: red;
+   padding: 1rem;
+   border-radius: 0rem 2rem;
+   min-width: 3rem;
+   max-width: 3rem;
+   min-height: 1.5rem;
+   max-height: 1.5rem;
+}

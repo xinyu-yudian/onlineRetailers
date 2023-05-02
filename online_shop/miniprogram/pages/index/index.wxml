@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+     <view class="loginHead">
+        <image src="../../images/logo.png"></image>
+     </view>
+     <view class="inBody">
+        <input placeholder="请输入账号" bindinput="inputUsername" value="{{loginForm.username}}"/>
+        <input placeholder="请输入密码" bindinput="inputPassword" value="{{loginForm.password}}"/>
+        <view class="inBodyFoot">
+          <button class="loginBtn" bindtap="login">登录</button>
+          <button class="resetBtn" >重置</button>
+        </view>
+     </view>
+</view>

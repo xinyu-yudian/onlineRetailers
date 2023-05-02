@@ -97,7 +97,7 @@
         async selGoodsName(){
           await this.$http.post('getGoodsList', {pageNow: this.pageNow, goodsName: this.inputGoodsName}).then((res)=>{
                console.log(res.data)
-             if(res.data.status !== 200)  return this.$message.error('获取用户数据失败') 
+             if(res.data.status !== 200)  return this.$message.error('获取商品数据失败') 
                this.tableData = res.data.data
                this.pageNow = res.data.pageNow
                this.pageTotal = res.data.pageTotal
