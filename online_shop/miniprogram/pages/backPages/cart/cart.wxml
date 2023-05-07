@@ -5,7 +5,7 @@
           <checkbox-group class="checkBtn" bindchange="checkboxChange" data-id="{{item.goods.id}}">
             <checkbox value="{{item.goods.id}}" style="float:left;" checked='{{item.checked}}'></checkbox>
           </checkbox-group> 
-          <image class="goodsIcon" src="../../../images/goodsDetail.png"/>
+          <image class="goodsIcon" src="../../../images/goods/{{item.goods.icon}}"/>
           <view class="goodsInfo">
               <view class="goodsName"> 
                 <text>{{item.goods.goodsName}}</text>

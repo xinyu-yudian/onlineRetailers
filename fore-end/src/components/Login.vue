@@ -61,7 +61,8 @@
          console.log(result)
          if (result.status !== 200) return this.$message.error('登陆失败-用户不存在/密码错误') 
          this.$message.success('登陆成功')
-         window.sessionStorage.setItem('token', result.data.token)
+         console.log(result.token+'--------------------------------')
+         window.sessionStorage.setItem('token', result.token)
          // 眺转，编程式导航对象
          this.$router.push('home')
        })

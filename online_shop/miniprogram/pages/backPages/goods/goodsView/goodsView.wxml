@@ -1,6 +1,6 @@
 <!--pages/backPages/goods/goodsView/goodsView.wxml-->
 <view class="head">
-   <image class="goodsIcon" src="../../../../images/goodsShow.png"/>
+   <image class="goodsIcon" src="../../../../images/goods/{{goods.icon}}"/>
 </view>
 <view class="body">
     <text class="price">

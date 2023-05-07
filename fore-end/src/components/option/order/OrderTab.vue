@@ -30,7 +30,7 @@
          <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="updateAddressClick(scope.row.id)" type="primary" icon="el-icon-edit" size="mini"></el-button>
-            <el-button  type="primary" icon="el-icon-location-outline" size="mini"></el-button>
+            <el-button @click="expressAction(scope.row.orderNumber)" type="primary" icon="el-icon-location-outline" size="mini"></el-button>
           </template>
          </el-table-column>
       </el-table>
@@ -65,6 +65,16 @@
       </span>
 
     </el-dialog>   
+
+    <!--展示物流进度-->
+    <el-dialog title="物流进度" :visible.sync="expressVisible" width="50%" style="line-height: 10px;">
+         <!--时间线-->
+         <el-timeline style="text-align: left;">
+            <el-timeline-item v-for="(activity, index) in expressList" :key="index" :timestamp="activity.time">
+                {{ activity.context }}
+            </el-timeline-item>
+         </el-timeline>
+    </el-dialog>
 
     </div>
       
@@ -102,7 +112,9 @@
                 secondAddress: [
                      { required: true, message: '请填写详细地址', trigger: 'blur' }
                 ],
-              }
+              },
+              expressVisible:false,
+              expressList:[]
           }
       },
       created(){
@@ -165,6 +177,14 @@
                   this.$message.success('修改成功')
                   this.getOrders()
             })
+        },
+        
+       async expressAction(orderNumber){
+             this.expressVisible = true
+             await this.$http.post('getExpress',{ orderNumber: orderNumber}).then((res)=>{
+                  console.log(res)
+                  this.expressList = res.data.data
+             })
         }
       }
     }

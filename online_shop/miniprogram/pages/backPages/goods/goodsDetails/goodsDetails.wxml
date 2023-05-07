@@ -25,7 +25,7 @@
 
 <view class="right">
   <view wx:for="{{goodsList}}" class="goodsItem" bindtap="toGoodsView" data-info="{{item}}">
-        <image src="../../../../images/promotion.png" class="proGoodsIcon"></image>
+        <image src="../../../../images/goods/{{item.icon}}" class="proGoodsIcon"></image>
         <text class="proGoodsText">{{item.goodsName}}</text>
         <text class="proGoodsPrice">￥{{item.price}}</text>
     </view>

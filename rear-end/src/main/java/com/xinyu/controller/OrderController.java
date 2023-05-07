@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xinyu.entity.Express;
 import com.xinyu.entity.User;
 import com.xinyu.entity.order.Order;
 import com.xinyu.entity.order.OrderDetails;
@@ -98,6 +99,20 @@ public class OrderController {
         map = new HashMap<>();
         if(detailsList!=null && detailsList.size()>0){
             map.put("data",detailsList);
+        }
+        return JSON.toJSONString(map);
+    }
+
+    @PostMapping("/getExpress")
+    public String getExpress(@RequestBody String params){
+        JSONObject jsonObject = JSON.parseObject(params);
+        System.out.println(jsonObject);
+        String orderNumber = jsonObject.getString("orderNumber");
+        List<Express> expressList = orderService.selExpressions(orderNumber);
+        System.out.println(expressList);
+        map = new HashMap<>();
+        if(expressList!=null && expressList.size()>0){
+            map.put("data",expressList);
         }
         return JSON.toJSONString(map);
     }

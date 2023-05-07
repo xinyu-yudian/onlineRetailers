@@ -56,7 +56,19 @@
     </delete>
 
     <update id="updateUser" parameterType="com.xinyu.entity.User">
-        update user set email = #{email}, mobile= #{mobile} where id = #{id}
+        update user
+           <set>
+               <if test="email != null and email != ''">
+                   email = #{email},
+               </if>
+               <if test="mobile != null and mobile != ''">
+                   mobile = #{mobile},
+               </if>
+               <if test="roleName != null and roleName != ''">
+                   role_name = #{roleName},
+               </if>
+           </set>
+        where id = #{id}
     </update>
 
     <update id="updateUserState">

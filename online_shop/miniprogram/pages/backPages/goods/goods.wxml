@@ -31,7 +31,7 @@
 <view class="category">
    <view wx:for="{{goodsCategory}}" class="categoryItem" data-info="{{item}}" bindtap="toGoodsDetails">
      <view class="categoryShow">
-       <image src="../../../images/goodsShow.png"></image>
+       <image src="../../../images/category/{{item.icon}}"></image>
        <text>{{item.categoryName}}</text>
      </view>
    </view>
@@ -47,7 +47,7 @@
 
 <view class="goodsList">
     <view wx:for="{{goodsList}}" class="goodsItem" bindtap="toGoodsView" data-info="{{item}}">
-        <image src="../../../images/promotion.png" class="proGoodsIcon"></image>
+        <image src="../../../images/goods/{{item.icon}}" class="proGoodsIcon"></image>
         <text class="proGoodsText">{{item.goodsName}}</text>
         <text class="proGoodsPrice">￥{{item.price}}</text>
     </view>

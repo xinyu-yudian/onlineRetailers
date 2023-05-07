@@ -19,6 +19,7 @@ public class HeaderTokenInterceptor implements HandlerInterceptor {
                              Object handler) throws Exception {
         // 获取请求头中的token验证字符串
         String headerToken = request.getHeader("token");
+        System.out.println("headerToken: " + headerToken);
         // 检测当前页面，设置当前页不是登录页面时就对其进行拦截
         // 具体方法就是检测URL中有没有login字符串
         if (!request.getRequestURI().contains("login")) {
@@ -32,14 +33,14 @@ public class HeaderTokenInterceptor implements HandlerInterceptor {
                 String name = (String) claims.get("username");
                 System.out.println(name);
                 LOG.debug("token验证通过");
-                return true;
             } catch (Exception e) {
                 //如果验证不合法，直接返回状态码401，返回失败信息
                 response.setStatus(401);
                 response.getWriter().write("{\"message\":\"forbidden\"}");
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
 

@@ -40,6 +40,7 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
             map1.put("categoryName",category1.getCategoryName());
             map1.put("level",category1.getLevel());
             map1.put("effective",category1.getEffective());
+            map1.put("icon",category1.getIcon());
             goodsCategory.setPid(category1.getId());
             List<GoodsCategory> goodsCategories2 = goodsCategoryMapper.selGoodsCategory(goodsCategory);
             Map<String,Object> map2;

@@ -1,7 +1,9 @@
 package com.xinyu.service.impl;
 
+import com.xinyu.entity.Express;
 import com.xinyu.entity.order.Order;
 import com.xinyu.entity.order.OrderDetails;
+import com.xinyu.mapper.express.ExpressMapper;
 import com.xinyu.mapper.order.OrderDetailsMapper;
 import com.xinyu.mapper.order.OrderMapper;
 import com.xinyu.service.OrderService;
@@ -18,6 +20,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDetailsMapper orderDetailsMapper;
+
+    @Autowired
+    private ExpressMapper expressMapper;
 
     @Override
     public List<Order> selOrders(Order order){
@@ -42,5 +47,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean addOrderDetails(OrderDetails orderDetails){
         return orderDetailsMapper.addOrderDetails(orderDetails)>0;
+    }
+
+    @Override
+    public List<Express> selExpressions(String orderNumber) {
+        return expressMapper.selExpressions(orderNumber);
     }
 }

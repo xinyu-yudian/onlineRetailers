@@ -13,7 +13,7 @@
        <view class="goodsList">
         <view wx:for="{{orderDetails}}" class="goodsItem">
             <view>
-                <image class="goodsIcon" src="../../../../images/promotion.png"/>
+                <image class="goodsIcon" src="../../../../images/goods/{{item.goods.icon}}"/>
             </view>
             <view>
                 <text class="goodsName">{{item.goods.goodsName}}</text>

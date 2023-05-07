@@ -11,7 +11,7 @@
  Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 24/04/2023 15:49:24
+ Date: 07/05/2023 20:57:58
 */
 
 SET NAMES utf8mb4;
@@ -55,6 +55,28 @@ INSERT INTO `attr_child` VALUES (4, '110英寸', 2);
 INSERT INTO `attr_child` VALUES (6, '100英寸', 2);
 
 -- ----------------------------
+-- Table structure for express
+-- ----------------------------
+DROP TABLE IF EXISTS `express`;
+CREATE TABLE `express`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `time` datetime(0) NOT NULL,
+  `finish_time` datetime(0) NOT NULL,
+  `context` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of express
+-- ----------------------------
+INSERT INTO `express` VALUES (1, '123456abd', '2023-05-06 19:53:16', '2023-05-07 19:53:20', '已签收，感谢使用顺丰，期待再次为你服务', NULL);
+INSERT INTO `express` VALUES (2, '123456abd', '2023-05-03 19:56:18', '2023-05-10 19:56:23', '[北京市]背景海淀区育新小区营业点派件员 顺丰速递95338正在为你派件', NULL);
+INSERT INTO `express` VALUES (3, '123456abd', '2023-05-02 19:58:07', '2023-05-17 19:58:15', '快递到达[北京海淀区育新小区营业点]', NULL);
+INSERT INTO `express` VALUES (4, '123456abd', '2023-05-01 19:59:25', '2023-05-16 19:59:29', '[湖南长沙岳麓区]商家已发货 顺丰速递873445正在为你派件', NULL);
+
+-- ----------------------------
 -- Table structure for goods
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
@@ -71,16 +93,17 @@ CREATE TABLE `goods`  (
   `params` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `introduce` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES (1, '南极人女士三角内裤 中腰可爱无痕女士内裤 均码 k102P1027', 34.50, 100, 100, '2023-04-20 21:44:57', NULL, 8, NULL, NULL, NULL);
-INSERT INTO `goods` VALUES (2, '邦诺姿 情趣内衣无痕蕾丝提臀诱惑丁字裤中腰档纯棉女士内裤低腰三角裤', 66.60, 45, 12, '2023-04-19 21:46:05', NULL, 8, NULL, NULL, NULL);
-INSERT INTO `goods` VALUES (3, '一次性口罩 盒装50只三层加厚无纺布防尘/带铝条', 23.00, 234, 4, '2023-04-22 21:46:56', NULL, 10, NULL, NULL, NULL);
-INSERT INTO `goods` VALUES (4, '莱克吸尘器家用M7 大吸力无线手持吸尘器 无耗材除螨吸尘器', 458.00, 58, 23, '2023-03-30 21:48:05', NULL, 10, NULL, NULL, NULL);
-INSERT INTO `goods` VALUES (5, '海尔', 600.00, 245, 120, '2023-04-23 00:00:00', '[2A81E9217445422FB985F87CDE714A50.png]', 3, '[]', '[]', '<p>哈哈</p>');
+INSERT INTO `goods` VALUES (1, '南极人女士三角内裤 中腰可爱无痕女士内裤 均码 k102P1027', 34.50, 94, 100, '2023-04-20 21:44:57', 'g01.png', 8, NULL, NULL, NULL);
+INSERT INTO `goods` VALUES (2, '邦诺姿 情趣内衣无痕蕾丝提臀诱惑丁字裤中腰档纯棉女士内裤低腰三角裤', 66.60, 43, 12, '2023-04-19 21:46:05', 'g06.png', 8, NULL, NULL, NULL);
+INSERT INTO `goods` VALUES (3, '一次性口罩 盒装50只三层加厚无纺布防尘/带铝条', 23.00, 231, 4, '2023-04-22 21:46:56', 'g03.png', 10, NULL, NULL, NULL);
+INSERT INTO `goods` VALUES (4, '莱克吸尘器家用M7 大吸力无线手持吸尘器 无耗材除螨吸尘器', 458.00, 58, 23, '2023-03-30 21:48:05', 'g04.png', 10, NULL, NULL, NULL);
+INSERT INTO `goods` VALUES (5, '新森宝 兼容乐高积木幻影忍者双头龙益智拼装未来骑士团塑料200块以上男女孩玩具6-14岁 空术神庙村送拆件器', 600.00, 245, 120, '2023-04-23 00:00:00', 'g05.png', 3, '[]', '[]', '<p>哈哈</p>');
+INSERT INTO `goods` VALUES (7, '奥迪双钻（AULDEY）超级飞侠-立体造型背包（乐迪款） 710061', 999.99, 8, 0.6, '2023-04-30 09:09:36', 'g08.png', 3, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for goods_category
@@ -92,27 +115,31 @@ CREATE TABLE `goods_category`  (
   `effective` int(0) NULL DEFAULT 1,
   `level` int(0) NULL DEFAULT 1,
   `pid` int(0) NULL DEFAULT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_category
 -- ----------------------------
-INSERT INTO `goods_category` VALUES (1, '大家电', 1, 1, NULL);
-INSERT INTO `goods_category` VALUES (2, '电视', 1, 2, 1);
-INSERT INTO `goods_category` VALUES (3, '曲面电视', 1, 3, 2);
-INSERT INTO `goods_category` VALUES (4, '海信', 1, 3, 2);
-INSERT INTO `goods_category` VALUES (5, 'TCL', 1, 3, 2);
-INSERT INTO `goods_category` VALUES (6, '服装', 1, 1, NULL);
-INSERT INTO `goods_category` VALUES (7, '衣服', 1, 2, 6);
-INSERT INTO `goods_category` VALUES (8, '南极人', 1, 3, 7);
-INSERT INTO `goods_category` VALUES (9, '厨房电器', 1, 2, 1);
-INSERT INTO `goods_category` VALUES (10, '加尔电饭煲', 1, 3, 9);
-INSERT INTO `goods_category` VALUES (11, 'test', 1, 1, NULL);
-INSERT INTO `goods_category` VALUES (12, 'test', 1, 2, 11);
-INSERT INTO `goods_category` VALUES (13, 'test1', 1, 2, 11);
-INSERT INTO `goods_category` VALUES (14, 'test3', 1, 3, 13);
-INSERT INTO `goods_category` VALUES (16, 'test33', 1, 3, 13);
+INSERT INTO `goods_category` VALUES (1, '大家电', 1, 1, NULL, '家电.png');
+INSERT INTO `goods_category` VALUES (2, '电视', 1, 2, 1, NULL);
+INSERT INTO `goods_category` VALUES (3, '曲面电视', 1, 3, 2, NULL);
+INSERT INTO `goods_category` VALUES (4, '海信', 1, 3, 2, NULL);
+INSERT INTO `goods_category` VALUES (5, 'TCL', 1, 3, 2, NULL);
+INSERT INTO `goods_category` VALUES (6, '服装', 1, 1, NULL, '服装.png');
+INSERT INTO `goods_category` VALUES (7, '衣服', 1, 2, 6, NULL);
+INSERT INTO `goods_category` VALUES (8, '南极人', 1, 3, 7, NULL);
+INSERT INTO `goods_category` VALUES (9, '厨房电器', 1, 2, 1, NULL);
+INSERT INTO `goods_category` VALUES (10, '加尔电饭煲', 1, 3, 9, NULL);
+INSERT INTO `goods_category` VALUES (11, '书籍', 1, 1, NULL, '书籍.png');
+INSERT INTO `goods_category` VALUES (12, '文学', 1, 2, 11, NULL);
+INSERT INTO `goods_category` VALUES (13, '网文', 1, 2, 11, NULL);
+INSERT INTO `goods_category` VALUES (14, '仙侠', 1, 3, 13, NULL);
+INSERT INTO `goods_category` VALUES (16, '历史', 1, 3, 13, NULL);
+INSERT INTO `goods_category` VALUES (17, '电器', 1, 1, NULL, '电器.png');
+INSERT INTO `goods_category` VALUES (18, '美食', 1, 1, NULL, '美食.png');
+INSERT INTO `goods_category` VALUES (19, '经济', 1, 1, 12, '经济.png');
 
 -- ----------------------------
 -- Table structure for order
@@ -131,12 +158,60 @@ CREATE TABLE `order`  (
   `place_time` datetime(0) NULL DEFAULT NULL,
   `order_price` double(10, 2) NULL DEFAULT 0.00,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of order
 -- ----------------------------
 INSERT INTO `order` VALUES (1, '123456abd', 1, 0, '否', '个人', NULL, NULL, '[\"北京\",\"东城区\"]-天安门', '2023-04-23 19:18:41', 344.09);
+INSERT INTO `order` VALUES (60, '34556343454', 2, 1, '是', '公司', '华为游侠公司', NULL, '湖南省长沙市岳麓区中电软件园', '2023-04-26 12:25:18', 866.70);
+INSERT INTO `order` VALUES (63, '450878E6CA594C1CAD32A643A86DFCE7', 3, 1, NULL, NULL, NULL, NULL, NULL, '2023-05-02 00:00:00', 69.00);
+INSERT INTO `order` VALUES (64, 'C09BEE80185F4B8E8334AC68000E8372', 3, 1, NULL, NULL, NULL, NULL, NULL, '2023-05-02 00:00:00', 202.20);
+INSERT INTO `order` VALUES (65, '0E230B5EB38E4E06BD865E1EC2CF96E4', 3, 1, NULL, NULL, NULL, NULL, NULL, '2023-05-05 00:00:00', 103.50);
+
+-- ----------------------------
+-- Table structure for order_goods
+-- ----------------------------
+DROP TABLE IF EXISTS `order_goods`;
+CREATE TABLE `order_goods`  (
+  `id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `order_id` int(0) UNSIGNED NOT NULL COMMENT '订单id',
+  `goods_id` mediumint(0) UNSIGNED NOT NULL COMMENT '商品id',
+  `goods_price` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '商品单价',
+  `goods_number` tinyint(0) NOT NULL DEFAULT 1 COMMENT '购买单个商品数量',
+  `goods_total_price` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '商品小计价格',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `order_id`(`order_id`) USING BTREE,
+  INDEX `goods_id`(`goods_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品订单关联表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order_goods
+-- ----------------------------
+INSERT INTO `order_goods` VALUES (50, 1, 2, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (51, 1, 1, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (52, 1, 3, 111.00, 3, 333.00);
+INSERT INTO `order_goods` VALUES (53, 1, 4, 111.00, 2, 222.00);
+INSERT INTO `order_goods` VALUES (54, 1, 5, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (55, 1, 2, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (57, 1, 4, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (58, 1, 1, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (60, 1, 3, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (61, 1, 5, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (63, 1, 2, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (64, 1, 5, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (65, 1, 2, 111.00, 3, 333.00);
+INSERT INTO `order_goods` VALUES (66, 1, 3, 111.00, 1, 111.00);
+INSERT INTO `order_goods` VALUES (68, 60, 2, 333.00, 2, 999.00);
+INSERT INTO `order_goods` VALUES (69, 60, 7, 666.00, 5, 999.00);
+INSERT INTO `order_goods` VALUES (70, 61, 96, 333.00, 2, 999.00);
+INSERT INTO `order_goods` VALUES (71, 61, 95, 666.00, 5, 999.00);
+INSERT INTO `order_goods` VALUES (72, 62, 96, 333.00, 2, 999.00);
+INSERT INTO `order_goods` VALUES (73, 62, 95, 666.00, 5, 999.00);
+INSERT INTO `order_goods` VALUES (86, 63, 1, 34.50, 2, 69.00);
+INSERT INTO `order_goods` VALUES (87, 64, 3, 23.00, 3, 69.00);
+INSERT INTO `order_goods` VALUES (88, 64, 2, 66.60, 2, 133.20);
+INSERT INTO `order_goods` VALUES (89, 65, 1, 34.50, 3, 103.50);
 
 -- ----------------------------
 -- Table structure for param
@@ -289,8 +364,8 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, '张三', '123456', '3330@qq.com', '110', '管理员', 1);
-INSERT INTO `user` VALUES (2, '李四', '123456', '3403@qq.com', '119', '用户', 0);
+INSERT INTO `user` VALUES (2, '李四', '123456', '3403@qq.com', '119', '软件开发工程师', 0);
 INSERT INTO `user` VALUES (3, 'admin', '123456', '456@qq.com', '109', '管理员', 1);
-INSERT INTO `user` VALUES (4, 'miko87', '12456', '3456', '123466', NULL, 0);
+INSERT INTO `user` VALUES (4, 'miko87', '12456', '3456', '123466', '运维', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

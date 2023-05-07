@@ -126,6 +126,22 @@ public class UserController {
         return JSON.toJSONString(map);
     }
 
+    @PutMapping("updateRole/{id}/{roleName}")
+    public String updateRole(@PathVariable Integer id,@PathVariable String roleName) {
+        user = new User();
+        user.setId(id);
+        user.setRoleName(roleName);
+        boolean flag = userService.updateUser(user);
+
+        map = new HashMap<>();
+        if(flag){
+            map.put("status",200);
+        }else {
+            map.put("status",500);
+        }
+        return JSON.toJSONString(map);
+    }
+
     @GetMapping("/getLoginUser")
     public String getLoginUser(HttpServletRequest request){
         application = request.getServletContext();

@@ -1,5 +1,6 @@
 package com.xinyu.service;
 
+import com.xinyu.entity.Express;
 import com.xinyu.entity.order.Order;
 import com.xinyu.entity.order.OrderDetails;
 
@@ -14,4 +15,5 @@ public interface OrderService {
 
     boolean addOrder(Order order);
     boolean addOrderDetails(OrderDetails orderDetails);
+    List<Express> selExpressions(String orderNumber);
 }

@@ -129,7 +129,7 @@ public class CartController {
         String uuid = UUID.randomUUID().toString().replace("-", "").toUpperCase();
         User user = (User) application.getAttribute("user");
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String nowTime = sdf.format(date);
         Double sumPrice = 0.0;
         for (Cart cart1 : conCart) {

@@ -5,6 +5,7 @@ module.exports = defineConfig({
     devServer: {
         // host: 'http://192.168.52.128/',
         port: 88,
-        open: { app: { name: 'chrome' } }
+        open: { app: { name: 'chrome' } },
+
     }
 })

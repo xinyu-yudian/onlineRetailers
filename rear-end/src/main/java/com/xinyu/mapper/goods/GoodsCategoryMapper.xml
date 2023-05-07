@@ -11,7 +11,8 @@
             category_name  categoryName,
             effective,
             level,
-            pid
+            pid,
+            icon
         from goods_category
         where 1=1
         <if test="id != null">

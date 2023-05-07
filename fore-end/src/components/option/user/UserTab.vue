@@ -33,8 +33,8 @@
           <template slot-scope="scope">
             <el-button @click="updateUserClick(scope.row.id)" type="primary" icon="el-icon-edit" size="mini"></el-button>
             <el-button @click="removeUser(scope.row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
-            <el-tooltip class="item" effect="dark" content="分配权限" placement="top-start">
-              <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+            <el-tooltip class="item" effect="dark" content="分配角色" placement="top-start">
+              <el-button @click="updateRole(scope.row)" type="warning" icon="el-icon-setting" size="mini"></el-button>
             </el-tooltip>
           </template>
          </el-table-column>
@@ -99,6 +99,31 @@
       </span>
 
     </el-dialog>   
+
+    <!--分配角色-->
+    <el-dialog title="分配角色" :visible.sync="dialogVisibleRole"  width="30%" style="line-height: 10px;">
+      
+      <el-form ref="form" :rules="roleFormRules" :model="roleForm" label-width="80px">
+        <el-form-item label="当前用户  - ">
+          <span style="float: left;">{{ roleForm.username }}</span>
+        </el-form-item>
+        <el-form-item label="当前角色  - ">
+          <span style="float: left;">{{ roleForm.orderRole }}</span>
+        </el-form-item>
+        <el-form-item label="分配新角色 - " style="white-space:nowrap;">
+            <el-select style="float: left; margin-left: 10px;" v-model="roleForm.newRoleL" placeholder="请选择">
+                <el-option v-for="item in role" :label="item.roleName" :value="item.roleName"></el-option>
+            </el-select>
+        </el-form-item>
+       </el-form>
+
+      <span slot="footer" class="dialog-footer">
+       <el-button @click="dialogVisibleRole = false">取 消</el-button>
+       <el-button type="primary" @click="updateRoleSubmit()">确 定</el-button>
+      </span>
+
+    </el-dialog>
+
     </div>
       
   </template>
@@ -120,6 +145,7 @@ import '../../../assets/css/global.css'
             userName:'',
             dialogVisibleAdd: false,
             dialogVisibleUpdate: false,
+            dialogVisibleRole: false,
             addForm:{
               username:'',
               password:'',
@@ -142,7 +168,19 @@ import '../../../assets/css/global.css'
                 email: [
                      { required: true, message: '请输入邮箱', trigger: 'blur' },
                  ]
-            }
+            },
+            roleFormRules: {
+              role: [
+                     { required: true, message: '请选择角色', trigger: 'blur' },
+                 ]
+            },
+            roleForm:{
+                id: '',
+                username: '',
+                orderRole: '',
+                newRoleL: ''
+            },
+            role:{}
          }
       },
       created(){
@@ -255,6 +293,28 @@ import '../../../assets/css/global.css'
           const id = user.id
           const state = user.msState
           await this.$http.put('updateUserState/'+id+'/'+state).then((res)=>{
+               if (res.status !== 200) return this.$message.error('状态修改失败') 
+               this.$message.success('状态修改成功')
+               this.getUserList()
+            }) 
+       },
+       async getRole(){
+          await this.$http.post('getRoleAndPower').then((res)=>{
+               console.log("role:")
+               console.log(res)
+               this.role = res.data
+            }) 
+       },
+       updateRole(role){
+           this.roleForm.id = role.id
+           this.roleForm.username = role.username
+           this.roleForm.orderRole = role.roleName
+           this.dialogVisibleRole = true
+           this.getRole()
+       },
+       async updateRoleSubmit(){
+            this.dialogVisibleRole = false
+            await this.$http.put('updateRole/'+this.roleForm.id+'/'+this.roleForm.newRoleL).then((res)=>{
                if (res.status !== 200) return this.$message.error('状态修改失败') 
                this.$message.success('状态修改成功')
                this.getUserList()

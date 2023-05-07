@@ -11,4 +11,5 @@ public class GoodsCategory implements Serializable {
      private Integer effective;
      private Integer level;
      private Integer pid;
+     private String icon;
 }

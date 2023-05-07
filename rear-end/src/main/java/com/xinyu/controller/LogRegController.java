@@ -7,7 +7,10 @@ import com.xinyu.entity.User;
 import com.xinyu.service.UserService;
 import com.xinyu.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -43,12 +46,15 @@ public class LogRegController {
         if(user!=null){
              String token = JWTUtils.getToken(user.getId(),user.getUsername(),user.getPassword());
              resp.setHeader("token",token);
+             System.out.println("token："+token);
              application.setAttribute("user",user);
              application.setAttribute("cartList",cartList);
              System.out.println("创建购物车：" +application.getAttribute("cartList"));
+
+
              map.put("status",200);
              map.put("data", JSON.toJSON(user));
-             map.put("token", token);
+             map.put("token", "Bearer " + token);
         }else {
             map.put("status",500);
         }
