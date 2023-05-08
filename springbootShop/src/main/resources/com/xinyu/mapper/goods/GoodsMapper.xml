@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.goods.GoodsMapper">
+
+    <insert id="addGoods" parameterType="com.xinyu.entity.Goods">
+        insert into goods(goods_name,price,number,weight,add_time,icon,cat_id,attrs,params,introduce)
+        values(#{goodsName},#{price},#{number},#{weight},#{addTime},#{icon},#{catId},#{attrs},#{params},#{introduce})
+    </insert>
+
+    <delete id="removeGoods" parameterType="int">
+        delete from goods where id = #{id}
+    </delete>
+
+    <update id="updateGoods" parameterType="com.xinyu.entity.Goods">
+        update goods set
+            goods_name = #{goodsName},
+            price = #{price},
+            number = #{number},
+            weight = #{weight},
+            add_time = #{addTime},
+            icon = #{icon},
+            cat_id = #{catId}
+        where id = #{id}
+    </update>
+
+    <select id="selGoodsList" parameterType="com.xinyu.entity.Goods" resultType="com.xinyu.entity.Goods">
+        select
+            id,
+            goods_name goodsName,
+            price,
+            number,
+            weight,
+            add_time addTime,
+            icon,
+            cat_id catId
+        from
+            goods
+        where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="goodsName != null and goodsName != ''">
+            and goods_name like concat('%',#{goodsName},'%')
+        </if>
+        <if test="catId != null">
+            and cat_id = #{catId}
+        </if>
+    </select>
+
+    <update id="updateNumber" parameterType="com.xinyu.entity.Goods">
+        update goods set number = number - #{number} where id = #{id}
+    </update>
+
+</mapper>

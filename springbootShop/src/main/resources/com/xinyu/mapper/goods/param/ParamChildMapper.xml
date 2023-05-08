@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.goods.param.ParamChildMapper">
+
+    <select id="selParamChildList" parameterType="com.xinyu.entity.param.ParamChild" resultType="com.xinyu.entity.param.ParamChild">
+        select id,child_name childName,pid
+        from param_child
+        where 1=1
+        <if test="pid != null">
+            and pid = #{pid}
+        </if>
+    </select>
+
+    <insert id="addParamChild" parameterType="com.xinyu.entity.param.ParamChild">
+        insert into param_child(child_name,pid) values(#{childName},#{pid})
+    </insert>
+
+    <update id="updateParamChild" parameterType="com.xinyu.entity.param.ParamChild">
+        update param_child set child_name = #{childName} where id = #{id}
+    </update>
+
+    <delete id="removeParamChild" parameterType="int">
+        delete from param_child where id = #{id}
+    </delete>
+
+</mapper>

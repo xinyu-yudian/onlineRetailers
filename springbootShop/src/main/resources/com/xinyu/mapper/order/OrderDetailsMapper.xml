@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.order.OrderDetailsMapper">
+
+    <resultMap id="goodsMap" type="com.xinyu.entity.Goods">
+        <id property="id" column="gid"/>
+        <result property="goodsName" column="goodsName"/>
+        <result property="price" column="price"/>
+        <result property="number" column="number"/>
+        <result property="weight" column="weight"/>
+        <result property="addTime" column="addTime"/>
+        <result property="icon" column="icon"/>
+        <result property="catId" column="catId"/>
+        <result property="attrs" column="attrs"/>
+        <result property="params" column="params"/>
+        <result property="introduce" column="introduce"/>
+    </resultMap>
+
+    <resultMap id="orderDetailsMapp" type="com.xinyu.entity.order.OrderDetails">
+        <id property="id" column="odid"/>
+        <result property="orderId" column="orderId"/>
+        <result property="goodsId" column="goodsId"/>
+        <result property="goodsPrice" column="goodsPrice"/>
+        <result property="goodsNumber" column="goodsNumber"/>
+        <result property="goodsTotalPrice" column="goodsTotalPrice"/>
+        <collection property="goods" resultMap="goodsMap"/>
+    </resultMap>
+
+    <select id="detailsList" parameterType="com.xinyu.entity.order.OrderDetails" resultMap="orderDetailsMapp">
+        select
+            od.id odid,
+            order_id orderId,
+            goods_id goodsId,
+            goods_price goodsPrice,
+            goods_number goodsNumber,
+            goods_total_price goodsTotalPrice,
+            g.id gid,
+            goods_name goodsName,
+            price,
+            number,
+            weight,
+            add_time addTime,
+            icon,
+            cat_id catId,
+            attrs,
+            params,
+            introduce
+        from
+            order_goods od
+        left join goods g
+            on od.goods_id = g.id
+        where 1=1
+        <if test="orderId != null">
+            and od.order_id = #{orderId}
+        </if>
+    </select>
+
+    <insert id="addOrderDetails" parameterType="com.xinyu.entity.order.OrderDetails">
+        insert into
+            order_goods(order_id,goods_id,goods_price,goods_number,goods_total_price)
+        values (#{orderId},#{goodsId},#{goodsPrice},#{goodsNumber},#{goodsTotalPrice})
+    </insert>
+
+</mapper>

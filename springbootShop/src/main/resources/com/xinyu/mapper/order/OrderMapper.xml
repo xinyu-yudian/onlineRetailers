@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.order.OrderMapper">
+
+    <update id="updateOrder" parameterType="com.xinyu.entity.order.Order">
+        update `order`
+        <set>
+            <if test="address != null and address!=''">
+                address = #{address},
+            </if>
+            <if test="payStatus != null">
+                pay_status = #{payStatus},
+            </if>
+        </set>
+             where id = #{id}
+    </update>
+
+    <select id="selOrders" parameterType="com.xinyu.entity.order.Order" resultType="com.xinyu.entity.order.Order">
+        select
+           id,
+           order_number orderNumber,
+           user_id userId,
+           pay_status payStatus,
+           is_send isSend,
+           organ,
+           company,
+           invoice,
+           address,
+           place_time placeTime,
+           order_price orderPrice
+        from
+            `order`
+        where 1=1
+        <if test="id != null">
+            and id =  #{id}
+        </if>
+        <if test="orderNumber != null and orderNumber != ''">
+             and order_number =  #{orderNumber}
+        </if>
+        <if test="payStatus != null">
+            and pay_status =  #{payStatus}
+        </if>
+    </select>
+
+    <insert id="addOrder" parameterType="com.xinyu.entity.order.Order">
+        insert into
+            `order`(order_number,user_id,pay_status,place_time,order_price)
+        values(#{orderNumber},#{userId},#{payStatus},#{placeTime},#{orderPrice})
+    </insert>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.mapper.power.PowerMapper">
+
+    <select id="selPowers" parameterType="com.xinyu.entity.Power" resultType="com.xinyu.entity.Power">
+        select
+            id,
+            power_name powerName,
+            path,
+            level,
+            pid
+        from power
+        where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="level != null">
+            and level = #{level}
+        </if>
+        <if test="pid != null">
+            and pid = #{pid}
+        </if>
+
+    </select>
+
+</mapper>
